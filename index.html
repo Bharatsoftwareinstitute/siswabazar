@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharat Software Institute - Siswa Bazar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        accent: {
+                            500: '#f97316',
+                            600: '#ea580c',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 50%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-bg {
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.12), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(249, 115, 22, 0.08), transparent 40%);
+        }
+    </style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Top Info Bar -->
+    <div class="bg-slate-900 text-slate-300 text-xs sm:text-sm py-2 px-4 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-brand-500"></i> Gopal Nagar Chauraha, Siswa Bazar - 273163</span>
+                <span class="hidden md:inline text-slate-600">|</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-user-tie text-accent-500"></i> Director: <strong>Kamlesh Kumar Sir</strong></span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:+919565218906" class="hover:text-white transition flex items-center gap-1"><i class="fa-solid fa-phone text-emerald-400"></i> +91 95652 18906</a>
+                <span class="text-slate-600">|</span>
+                <a href="#admission" class="text-accent-500 font-semibold hover:underline">Admission Open 2026</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-700 to-brand-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition transform">
+                    <i class="fa-solid fa-laptop-code text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 leading-tight">BHARAT <span class="text-brand-600">SOFTWARE</span></h1>
+                    <p class="text-[10px] sm:text-xs font-medium text-slate-500 tracking-wider uppercase">Institute of Computer Education</p>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-slate-600 text-sm">
+                <a href="#home" class="hover:text-brand-600 transition">Home</a>
+                <a href="#courses" class="hover:text-brand-600 transition">Courses</a>
+                <a href="#about" class="hover:text-brand-600 transition">About Us</a>
+                <a href="#facilities" class="hover:text-brand-600 transition">Facilities</a>
+                <a href="#faq" class="hover:text-brand-600 transition">FAQs</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="https://wa.me/919565218906" target="_blank" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-md shadow-brand-600/20 transition hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-base"></i> Contact Sir
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="lg:hidden text-slate-700 hover:text-brand-600 p-2 text-xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-3">
+            <a href="#home" class="block text-slate-700 hover:text-brand-600 font-medium py-1">Home</a>
+            <a href="#courses" class="block text-slate-700 hover:text-brand-600 font-medium py-1">Courses</a>
+            <a href="#director" class="block text-slate-700 hover:text-brand-600 font-medium py-1">Director Sir</a>
+            <a href="#facilities" class="block text-slate-700 hover:text-brand-600 font-medium py-1">Facilities</a>
+            <a href="#faq" class="block text-slate-700 hover:text-brand-600 font-medium py-1">FAQs</a>
+            <a href="https://wa.me/919565218906" target="_blank" class="block w-full text-center bg-brand-600 text-white font-semibold py-2.5 rounded-xl mt-2"><i class="fa-brands fa-whatsapp mr-2"></i> Contact Sir</a>
+        </div>
+    </header>
+
+        <!-- Hero Section -->
+        <section id="home" class="relative hero-bg pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Hero Left Content -->
+                    <div class="lg:col-span-7 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-200/80 text-brand-700 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-6">
+                            <span class="flex h-2 w-2 rounded-full bg-brand-600 animate-pulse"></span>
+                            #1 Computer Institute in Siswa Bazar
+                        </div>
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
+                            Build Your Digital Career with <span class="gradient-text">Bharat Software Institute</span>
+                        </h1>
+                        <p class="text-slate-600 text-base sm:text-lg mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                            Master modern computer skills like <strong>DCA, ADCA, Tally Prime, Hindi/English Typing, C, C++</strong>, and <strong>Multimedia</strong> under the expert guidance of <strong>Kamlesh Kumar Sir</strong>.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10">
+                            <a href="https://wa.me/919565218906?text=Hello%20Kamlesh%20Sir,%20I%20want%20to%20know%20about%20new%20batches." target="_blank" class="w-full sm:w-auto bg-brand-600 hover:bg-brand-700 text-white font-bold text-base px-8 py-4 rounded-xl shadow-lg shadow-brand-600/30 transition hover:-translate-y-0.5 text-center">
+                                Contact Kamlesh Sir <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="#director" class="w-full sm:w-auto bg-white hover:bg-slate-100 text-slate-800 border border-slate-200 font-semibold text-base px-7 py-4 rounded-xl transition text-center shadow-sm">
+                                Know About Director Sir
+                            </a>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-brand-600">3000+</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-medium">Students Trained</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-accent-500">ISO</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-medium">Standard Labs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Card / Image Banner -->
+                            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+                                <div>
+                                    <h3 class="font-bold text-lg text-slate-900">Next Batch Starting Soon!</h3>
+                                    <p class="text-xs text-slate-500">Gopal Nagar Chauraha, Siswa Bazar branch</p>
+                                </div>
+                                <span class="bg-amber-100 text-amber-800 text-xs px-2.5 py-1 rounded-md font-bold">New</span>
+                            </div>
+
+                            <ul class="space-y-4 text-sm text-slate-600 mb-6">
+                                <li class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-check"></i></div>
+                                    <span>Separate Batches for Hindi & English Typing</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-check"></i></div>
+                                    <span>Tally Prime with GST & Accounting Projects</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-check"></i></div>
+                                    <span>C / C++ Logic Building & Programming</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-check"></i></div>
+                                    <span>Graphic & Multimedia Designing</span>
+                                </li>
+                            </ul>
+
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden flex-shrink-0 flex items-center justify-center border-2 border-brand-500">
+                                    <i class="fa-solid fa-user-tie text-2xl text-slate-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-slate-900 text-sm">Kamlesh Kumar Sir</p>
+                                    <p class="text-xs text-slate-500">Director & Lead Instructor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Courses Section -->
+    <section id="courses" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-600 font-bold text-xs uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-full">Our Academic Programs</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-4">Job Oriented Computer Courses</h2>
+                <p class="text-slate-600">Designed to make students job-ready with practical computer skills for private and government sectors.</p>
+                
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap justify-center gap-2 mt-8" id="courseFilters">
+                    <button onclick="filterCourses('all')" class="filter-btn active bg-brand-600 text-white px-4 py-2 rounded-xl text-sm font-semibold transition">All Courses</button>
+                    <button onclick="filterCourses('diploma')" class="filter-btn bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-sm font-semibold transition">Diplomas (DCA/ADCA)</button>
+                    <button onclick="filterCourses('accounting')" class="filter-btn bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-sm font-semibold transition">Tally & Finance</button>
+                    <button onclick="filterCourses('coding')" class="filter-btn bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-sm font-semibold transition">Programming (C/C++)</button>
+                    <button onclick="filterCourses('skill')" class="filter-btn bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-sm font-semibold transition">Typing & Media</button>
+                </div>
+            </div>
+
+            <!-- Courses Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="coursesGrid">
+                
+                <!-- ADCA -->
+                <div class="course-card diploma bg-slate-50 border border-slate-200/80 rounded-2xl p-6 hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-brand-100 text-brand-800 text-xs font-bold px-3 py-1 rounded-full">1 Year Course</span>
+                            <span class="text-accent-500 text-xs font-semibold"><i class="fa-solid fa-star"></i> Most Popular</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">ADCA (Advance Diploma in Computer Application)</h3>
+                        <p class="text-slate-600 text-sm mb-4">Complete computer course covering Basics, MS Office, Tally Prime, Internet, Web Design & Graphic Fundamentals.</p>
+                        <div class="border-t border-slate-200 pt-4 mb-4">
+                            <p class="text-xs text-slate-500 font-semibold mb-2">KEY COVERAGE:</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">MS Office</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">Tally GST</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">Photoshop</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">Internet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openCourseModal('ADCA', '12 Months', 'Advanced Diploma in Computer Application', 'Detailed syllabus includes Computer Fundamentals, Windows OS, MS Word, Excel, PowerPoint, Access, Tally Prime with GST, HTML Basic, Photoshop, and Internet applications.')" class="w-full bg-white hover:bg-brand-600 hover:text-white border border-slate-300 text-slate-800 font-semibold py-2.5 rounded-xl transition text-sm">
+                        View Full Details
+                    </button>
+                </div>
+
+                <!-- DCA -->
+                <div class="course-card diploma bg-slate-50 border border-slate-200/80 rounded-2xl p-6 hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-brand-100 text-brand-800 text-xs font-bold px-3 py-1 rounded-full">6 Months Course</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">DCA (Diploma in Computer Application)</h3>
+                        <p class="text-slate-600 text-sm mb-4">Ideal foundation course for office jobs, government exams, and basic computer proficiency.</p>
+                        <div class="border-t border-slate-200 pt-4 mb-4">
+                            <p class="text-xs text-slate-500 font-semibold mb-2">KEY COVERAGE:</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">Fundamental</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">MS Word/Excel</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">PowerPoint</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">Internet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openCourseModal('DCA', '6 Months', 'Diploma in Computer Application', 'Covers basic computer operational concepts, Windows operating system, Microsoft Office Suite (Word, Excel, PowerPoint), basic troubleshooting, and internet usages.')" class="w-full bg-white hover:bg-brand-600 hover:text-white border border-slate-300 text-slate-800 font-semibold py-2.5 rounded-xl transition text-sm">
+                        View Full Details
+                    </button>
+                </div>
+
+                <!-- Tally -->
+                <div class="course-card accounting bg-slate-50 border border-slate-200/80 rounded-2xl p-6 hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full">3 - 6 Months</span>
+                            <span class="text-emerald-600 text-xs font-semibold"><i class="fa-solid fa-calculator"></i> Accounting</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Tally Prime + GST</h3>
+                        <p class="text-slate-600 text-sm mb-4">Master professional accounting, voucher entry, inventory management, and GST return filing.</p>
+                        <div class="border-t border-slate-200 pt-4 mb-4">
+                            <p class="text-xs text-slate-500 font-semibold mb-2">KEY COVERAGE:</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">Accounts Only</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">Inventory</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">GST Billing</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">Payroll</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openCourseModal('Tally Prime', '3 - 6 Months', 'Professional Accounting & GST', 'Comprehensive training on financial accounting rules, Tally Prime shortcuts, GST configuration, CGST/SGST/IGST entry, E-way bill generation, and profit & loss auditing.')" class="w-full bg-white hover:bg-brand-600 hover:text-white border border-slate-300 text-slate-800 font-semibold py-2.5 rounded-xl transition text-sm">
+                        View Full Details
+                    </button>
+                </div>
+
+                <!-- Typing -->
+                <div class="course-card skill bg-slate-50 border border-slate-200/80 rounded-2xl p-6 hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">3 Months</span>
+                            <span class="text-amber-600 text-xs font-semibold"><i class="fa-solid fa-keyboard"></i> Speed Special</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Hindi & English Typing</h3>
+                        <p class="text-slate-600 text-sm mb-4">Prepare for High Court, SSC, CPCT, and government typing exams with accuracy and speed building.</p>
+                        <div class="border-t border-slate-200 pt-4 mb-4">
+                            <p class="text-xs text-slate-500 font-semibold mb-2">KEY COVERAGE:</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">Kruti Dev</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">Mangal Inscript</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">English Speed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openCourseModal('Typing Mastery', '3 Months', 'Hindi & English Speed Typing', 'Special focus on finger placement, key shortcuts, Kruti Dev font, Mangal font, speed building tests up to 40+ WPM with accuracy reports.')" class="w-full bg-white hover:bg-brand-600 hover:text-white border border-slate-300 text-slate-800 font-semibold py-2.5 rounded-xl transition text-sm">
+                        View Full Details
+                    </button>
+                </div>
+
+                <!-- C & C++ -->
+                <div class="course-card coding bg-slate-50 border border-slate-200/80 rounded-2xl p-6 hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full">3 - 6 Months</span>
+                            <span class="text-purple-600 text-xs font-semibold"><i class="fa-solid fa-code"></i> Logic Building</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">C & C++ Programming</h3>
+                        <p class="text-slate-600 text-sm mb-4">Learn core programming foundations, algorithms, object-oriented concepts (OOPs), and logic creation.</p>
+                        <div class="border-t border-slate-200 pt-4 mb-4">
+                            <p class="text-xs text-slate-500 font-semibold mb-2">KEY COVERAGE:</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">Syntax & Loops</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">Functions & Arrays</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">Pointers</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">OOPs Principles</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openCourseModal('C & C++ Programming', '3 - 6 Months', 'Software Development Basics', 'Designed for BCA, Diploma, and School/College students. Covers fundamentals of C language, data structures basics, and OOPs in C++ with practical programs.')" class="w-full bg-white hover:bg-brand-600 hover:text-white border border-slate-300 text-slate-800 font-semibold py-2.5 rounded-xl transition text-sm">
+                        View Full Details
+                    </button>
+                </div>
+
+                <!-- Multimedia -->
+                <div class="course-card skill bg-slate-50 border border-slate-200/80 rounded-2xl p-6 hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-pink-100 text-pink-800 text-xs font-bold px-3 py-1 rounded-full">3 - 6 Months</span>
+                            <span class="text-pink-600 text-xs font-semibold"><i class="fa-solid fa-wand-magic-sparkles"></i> Creative</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Multimedia & Design</h3>
+                        <p class="text-slate-600 text-sm mb-4">Unleash creativity with photo editing, banner design, vector graphic creation, and video editing basics.</p>
+                        <div class="border-t border-slate-200 pt-4 mb-4">
+                            <p class="text-xs text-slate-500 font-semibold mb-2">KEY COVERAGE:</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">Photoshop</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">CorelDraw</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2.5 py-1 rounded-md text-slate-700">Audio/Video Editing</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openCourseModal('Multimedia & Design', '3 - 6 Months', 'Graphic & Audio-Visual Design', 'Learn Photoshop poster editing, CorelDraw printing press design, digital photo restoration, thumbnail creation, and media production skills.')" class="w-full bg-white hover:bg-brand-600 hover:text-white border border-slate-300 text-slate-800 font-semibold py-2.5 rounded-xl transition text-sm">
+                        View Full Details
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Director Profile Section (Young & Modern Teacher) -->
+    <section id="director" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Ambient background glows -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-600/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-accent-500 font-bold text-xs uppercase tracking-widest bg-slate-800/90 px-4 py-1.5 rounded-full border border-slate-700">हमारे निदेशक एवं मुख्य मार्गदर्शक</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-4 mb-4">Meet Kamlesh Kumar Sir</h2>
+                <p class="text-slate-400 text-base">Young, Dynamic & Energetic Computer Educator in Siswa Bazar</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <!-- Director Left Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-gradient-to-b from-brand-600/30 to-slate-800/80 p-1 rounded-3xl border border-slate-700 shadow-2xl backdrop-blur-sm">
+                        <div class="bg-slate-900 rounded-[22px] p-8 text-center relative overflow-hidden">
+                            <!-- Avatar Icon Container -->
+                            <div class="relative w-36 h-36 mx-auto mb-6">
+                                <div class="w-full h-full rounded-full bg-gradient-to-tr from-brand-600 to-brand-400 p-1 shadow-2xl">
+                                    <div class="w-full h-full rounded-full bg-slate-800 flex items-center justify-center border-4 border-slate-900">
+                                        <i class="fa-solid fa-user-tie text-6xl text-brand-400"></i>
+                                    </div>
+                                </div>
+                                <span class="absolute bottom-1 right-1 bg-emerald-500 border-2 border-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">
+                                    Active Guide
+                                </span>
+                            </div>
+
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-1">Kamlesh Kumar Sir</h3>
+                            <p class="text-brand-400 font-semibold text-sm mb-4">Director & Founder - Bharat Software Institute</p>
+
+                            <div class="inline-flex items-center gap-2 bg-slate-800 border border-slate-700 text-slate-300 text-xs px-4 py-2 rounded-full mb-6">
+                                <i class="fa-solid fa-location-dot text-brand-500"></i> Gopal Nagar Chauraha, Siswa Bazar
+                            </div>
+
+                            <div class="space-y-3 text-left bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60 text-xs sm:text-sm text-slate-300">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-7 h-7 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-check"></i></div>
+                                    <span>Specialist in C / C++ & Logic Building</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-check"></i></div>
+                                    <span>Expert in Tally Prime & GST Accounting</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-7 h-7 rounded-lg bg-accent-500/20 text-accent-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-check"></i></div>
+                                    <span>Hindi & English Typing Speed Mentor</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 pt-6 border-t border-slate-800 flex justify-center gap-3">
+                                <a href="tel:+919565218906" class="flex-1 bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-4 rounded-xl transition text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-brand-600/30">
+                                    <i class="fa-solid fa-phone"></i> Direct Call
+                                </a>
+                                <a href="https://wa.me/919565218906?text=Hello%20Kamlesh%20Sir,%20mujhe%20computer%20course%20ki%20jaankari%20chahiye." target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl transition text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30">
+                                    <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Director Right Highlights -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 hover:border-brand-500/80 transition duration-300">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-500/20 text-brand-400 flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2">Young, Dynamic & Friendly Approach</h4>
+                                <p class="text-slate-300 text-sm leading-relaxed">
+                                    Kamlesh Kumar Sir ek modern aur young teacher hain jo har student ki soch aur zaroorat ko achchhi tarah samajhte hain. Unka friendly nature aur padhane ka energetic andaaz students me computer seekhne ka naya utsah bhar deta hai.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 hover:border-brand-500/80 transition duration-300">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="fa-solid fa-language"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2">Aasan Hindi Me Practical Knowledge</h4>
+                                <p class="text-slate-300 text-sm leading-relaxed">
+                                    Computer aur Programming ke tough se tough topic ko bilkul aasan, daily-life examples aur saral Hindi bhasha me samjhana Kamlesh Sir ki sabse badi khasiyat hai. Unke paas ratna nahi, balki practical samajhna sikhaaya jata hai.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 hover:border-brand-500/80 transition duration-300">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-accent-500/20 text-accent-400 flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="fa-solid fa-hand-holding-hand"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2">Personal Lab Attention to Every Student</h4>
+                                <p class="text-slate-300 text-sm leading-relaxed">
+                                    Har ek student ko lab me computer par alag se guidance milti hai. Chahe aap beginner hon ya advance seekhna chahte hon, Kamlesh Sir khud aakar lab me aapke doubt clear karte hain.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 hover:border-brand-500/80 transition duration-300">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="fa-solid fa-bullseye"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2">Siswa Bazar Ke Yuvaon Ko Job Ready Banana</h4>
+                                <p class="text-slate-300 text-sm leading-relaxed">
+                                    Unka mukhya lakshya Siswa Bazar aur aas-paas ke sabhi gramin evam shahri yuvaon ko high-tech computer education dekar unhe private aur government jobs ke liye aatmanirbhar banana hai.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-600 font-bold text-xs uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-full">Why Choose Us</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-4">Key Student Facilities</h2>
+                <p class="text-slate-600">We provide the best environment in Siswa Bazar for comfortable and effective learning.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/80 hover:border-brand-500 transition">
+                    <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-desktop"></i></div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-2">Modern Computer Lab</h3>
+                    <p class="text-slate-600 text-sm">High-speed computers with updated software and uninterrupted power backup.</p>
+                </div>
+
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/80 hover:border-brand-500 transition">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-print"></i></div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-2">Study Material & Notes</h3>
+                    <p class="text-slate-600 text-sm">Comprehensive Hindi/English printed notes and assignment sheets for every subject.</p>
+                </div>
+
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/80 hover:border-brand-500 transition">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-clock font-bold"></i></div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-2">Flexible Batch Timings</h3>
+                    <p class="text-slate-600 text-sm">Multiple morning and evening batches suitable for school and college students.</p>
+                </div>
+
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/80 hover:border-brand-500 transition">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-id-card"></i></div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-2">Job Support & Guidance</h3>
+                    <p class="text-slate-600 text-sm">Assistance in resume creation, mock interviews, and local job placements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Direct Student Registration Section -->
+    <section id="registration" class="py-20 bg-slate-900 text-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="bg-slate-800 rounded-3xl p-6 sm:p-10 border border-slate-700 shadow-2xl">
+                <div class="text-center mb-8">
+                    <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
+                        <i class="fa-brands fa-whatsapp text-emerald-400 mr-1.5"></i> Direct WhatsApp Admission Inquiry
+                    </span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-3">Online Registration Form</h2>
+                    <p class="text-slate-300 text-sm sm:text-base mt-2">
+                        Form me apni saari jankari bharein aur <strong>"Send Details to Sir's WhatsApp"</strong> par click karein. Aapki details Kamlesh Sir ke WhatsApp par direct bhej di jayegi.
+                    </p>
+                </div>
+
+                <form id="whatsappRegForm" onsubmit="sendToWhatsApp(event)" class="space-y-4">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Student's Full Name (छात्र का पूरा नाम) *</label>
+                            <input type="text" id="regName" required placeholder="Ex. Rahul Kumar" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Father's Name (पिता का नाम) *</label>
+                            <input type="text" id="regFather" required placeholder="Ex. Shri Ram Kumar" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Mobile / WhatsApp Number (मोबाइल नंबर) *</label>
+                            <input type="tel" id="regPhone" required pattern="[0-9]{10}" placeholder="10 Digit Mobile Number" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Qualification / Class (योग्यता) *</label>
+                            <input type="text" id="regEdu" required placeholder="Ex. 10th / 12th / BA / B.Com" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Select Course (कोर्स चुनें) *</label>
+                            <select id="regCourse" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500">
+                                <option value="">-- Choose Course --</option>
+                                <option value="ADCA (1 Year)">ADCA (1 Year Advance Diploma)</option>
+                                <option value="DCA (6 Months)">DCA (6 Months Diploma)</option>
+                                <option value="Tally Prime + GST">Tally Prime + GST</option>
+                                <option value="Hindi / English Typing">Hindi & English Typing Special</option>
+                                <option value="C / C++ Programming">C / C++ Programming</option>
+                                <option value="Multimedia & Graphic Design">Multimedia & Graphic Design</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Preferred Batch Timing (समय) *</label>
+                            <select id="regTime" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500">
+                                <option value="">-- Choose Preferred Shift --</option>
+                                <option value="Morning Shift (सुबह 7 AM - 11 AM)">Morning Shift (7 AM - 11 AM)</option>
+                                <option value="Noon Shift (दोपहर 11 AM - 2 PM)">Noon Shift (11 AM - 2 PM)</option>
+                                <option value="Evening Shift (शाम 2 PM - 6 PM)">Evening Shift (2 PM - 6 PM)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Address / Village / Post (पता) *</label>
+                        <input type="text" id="regAddress" required placeholder="Gopal Nagar / Siswa Bazar / Near Location" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500">
+                    </div>
+
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl transition shadow-lg shadow-emerald-600/30 text-base flex items-center justify-center gap-2 cursor-pointer mt-2">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i> Send Registration Details on Sir's WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Reviews / Testimonials -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-600 font-bold text-xs uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-full">Student Voice</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-4">What Our Students Say</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <div class="flex text-amber-400 text-sm gap-1 mb-3">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">"Kamlesh Sir bahut achchhe se samjhate hain. Main ADCA kar raha hoon aur practical lab me bahut confidence aaya hai."</p>
+                    <div class="font-bold text-slate-900 text-sm">Saurya Banka</div>
+                    <div class="text-xs text-slate-500">ADCA Student, Siswa</div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <div class="flex text-amber-400 text-sm gap-1 mb-3">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">"Tally Prime Seekhne ke baad mujhe local dukan me accounting ka kaam mil gaya. BHARAT Institute sabse behtar hai."</p>
+                    <div class="font-bold text-slate-900 text-sm">Saloni Mishra</div>
+                    <div class="text-xs text-slate-500">Tally Student</div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <div class="flex text-amber-400 text-sm gap-1 mb-3">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">"Hindi aur English typing ki speed badhane me Kamlesh Sir ka tips bahut kaam aaya. CPCT exam clear hua."</p>
+                    <div class="font-bold text-slate-900 text-sm">Vaishnavi Pandey</div>
+                    <div class="text-xs text-slate-500">Typing Student</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12">
+                <span class="text-brand-600 font-bold text-xs uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-full">Got Questions?</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-3">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(1)" class="w-full flex justify-between items-center p-5 text-left font-bold text-slate-800 bg-slate-50 hover:bg-slate-100 transition">
+                        <span>Kya institute se certificate milta hai?</span>
+                        <i id="faqIcon-1" class="fa-solid fa-chevron-down text-brand-600 transition-transform"></i>
+                    </button>
+                    <div id="faqAns-1" class="hidden p-5 text-slate-600 text-sm border-t border-slate-200 bg-white">
+                        Haan, course pura hone par practical exam ke baad recognized certificate pradan kiya jata hai jo sabhi private evam government jobs me maanya hai.
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(2)" class="w-full flex justify-between items-center p-5 text-left font-bold text-slate-800 bg-slate-50 hover:bg-slate-100 transition">
+                        <span>Kya computer bilkul shuruat (Zero Level) se sikhaya jata hai?</span>
+                        <i id="faqIcon-2" class="fa-solid fa-chevron-down text-brand-600 transition-transform"></i>
+                    </button>
+                    <div id="faqAns-2" class="hidden p-5 text-slate-600 text-sm border-t border-slate-200 bg-white">
+                        Ji haan! Agar aapko computer ka C bhi nahi aata tab bhi Kamlesh Sir aapko basic se advance level tak step-by-step sikhayenge.
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(3)" class="w-full flex justify-between items-center p-5 text-left font-bold text-slate-800 bg-slate-50 hover:bg-slate-100 transition">
+                        <span>Siswa Bazar me institute kahan sthit hai?</span>
+                        <i id="faqIcon-3" class="fa-solid fa-chevron-down text-brand-600 transition-transform"></i>
+                    </button>
+                    <div id="faqAns-3" class="hidden p-5 text-slate-600 text-sm border-t border-slate-200 bg-white">
+                        Institute Gopal Nagar Chauraha, Siswa Bazar, Pin Code: 273163 par sthit hai. Exact location ya directions ke liye call button par click karein.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer class="bg-slate-950 text-slate-400 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-4 gap-8">
+                
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white font-bold text-lg">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <h3 class="font-extrabold text-xl text-white">BHARAT SOFTWARE INSTITUTE</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 mb-6 max-w-md">
+                        Premier computer coaching institute in Gopal Nagar Chauraha, Siswa Bazar empowering students with high-value digital and programming skills under Kamlesh Kumar Sir.
+                    </p>
+                    <div class="flex gap-3 text-lg">
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-600 text-slate-300 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://wa.me/919876543210" target="_blank" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-emerald-600 text-slate-300 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-base mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#home" class="hover:text-white transition">Home</a></li>
+                        <li><a href="#courses" class="hover:text-white transition">Courses Offered</a></li>
+                        <li><a href="#director" class="hover:text-white transition">Director Message</a></li>
+                        <li><a href="#facilities" class="hover:text-white transition">Facilities</a></li>
+                        <li><a href="#location" class="hover:text-white transition">Address & Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-base mb-4">Contact Info</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-500 mt-1"></i>
+                            <span>Gopal Nagar Chauraha, Siswa Bazar, Maharajganj - 273163 (U.P.)</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-emerald-400"></i>
+                            <a href="tel:+919565218906" class="hover:text-white">+91 95652 18906</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-user-tie text-accent-500"></i>
+                            <span>Director: Kamlesh Kumar Sir</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-slate-800 mt-12 pt-8 text-center text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 Bharat Software Institute, Siswa Bazar. All rights reserved.</p>
+                <div class="bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl text-slate-400 flex items-center gap-2">
+                    <span>Designed & Developed by <strong class="text-slate-200">Samsad Khan</strong></span>
+                    <span class="text-slate-600">|</span>
+                    <a href="tel:+916307461378" class="text-brand-400 hover:text-brand-300 font-semibold flex items-center gap-1"><i class="fa-solid fa-phone text-xs"></i> 6307461378</a>
+                    <a href="https://wa.me/916307461378" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1"><i class="fa-brands fa-whatsapp text-xs"></i> WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Quick Contact Bar for Mobile -->
+    <div class="fixed bottom-4 left-4 right-4 z-50 flex gap-2 sm:hidden">
+        <a href="tel:+919565218906" class="flex-1 bg-brand-600 text-white py-3 rounded-2xl shadow-xl font-bold text-center flex items-center justify-center gap-2 text-sm">
+            <i class="fa-solid fa-phone"></i> Call Now
+        </a>
+        <a href="https://wa.me/919565218906?text=Hello%20Kamlesh%20Sir,%20I%20want%20information%20about%20computer%20courses." target="_blank" class="flex-1 bg-emerald-600 text-white py-3 rounded-2xl shadow-xl font-bold text-center flex items-center justify-center gap-2 text-sm">
+            <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
+        </a>
+    </div>
+
+    <!-- Course Details Modal -->
+    <div id="courseModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeCourseModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 text-xl font-bold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <span id="modalBadge" class="bg-brand-100 text-brand-800 text-xs font-bold px-3 py-1 rounded-full">Duration</span>
+            <h3 id="modalTitle" class="text-2xl font-extrabold text-slate-900 mt-2 mb-1">Course Title</h3>
+            <p id="modalSubtitle" class="text-xs text-slate-500 font-semibold mb-4">Subtitle</p>
+            
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-4 text-sm text-slate-600 leading-relaxed" id="modalDescription">
+                Course description goes here...
+            </div>
+
+            <div class="flex items-center justify-between border-t border-slate-100 pt-4 mb-6">
+                <div>
+                    <p class="text-xs text-slate-400">Instructor</p>
+                    <p class="text-sm font-bold text-slate-800">Kamlesh Kumar Sir</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-slate-400">Location</p>
+                    <p class="text-xs font-bold text-brand-600">Gopal Nagar Chauraha, Siswa Bazar (273163)</p>
+                </div>
+            </div>
+
+            <div class="flex gap-3">
+                <a href="https://wa.me/919565218906?text=Hello%20Kamlesh%20Sir,%20I%20am%20interested%20in%20this%20course." target="_blank" onclick="closeCourseModal()" class="flex-1 bg-brand-600 text-white font-bold py-3 rounded-xl text-center text-sm shadow-md hover:bg-brand-700 transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-phone"></i> Contact Sir
+                </a>
+                <a href="https://wa.me/919565218906?text=Hello%20Kamlesh%20Sir,%20I%20am%20interested%20in%20this%20course." target="_blank" class="bg-emerald-600 text-white font-bold px-4 py-3 rounded-xl text-center text-sm shadow-md hover:bg-emerald-700 transition flex items-center justify-center">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Handlers -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Course Filtering
+        function filterCourses(category) {
+            const cards = document.querySelectorAll('.course-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-600', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-700');
+            });
+
+            event.currentTarget.classList.remove('bg-slate-100', 'text-slate-700');
+            event.currentTarget.classList.add('bg-brand-600', 'text-white');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Course Modal Trigger
+        function openCourseModal(title, duration, subtitle, description) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBadge').innerText = duration;
+            document.getElementById('modalSubtitle').innerText = subtitle;
+            document.getElementById('modalDescription').innerText = description;
+            document.getElementById('courseModal').classList.remove('hidden');
+        }
+
+        function closeCourseModal() {
+            document.getElementById('courseModal').classList.add('hidden');
+        }
+
+        // FAQ Toggle
+        function toggleFaq(id) {
+            const ans = document.getElementById(`faqAns-${id}`);
+            const icon = document.getElementById(`faqIcon-${id}`);
+            
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                ans.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Send Registration details directly to Kamlesh Sir's WhatsApp
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('regName').value.trim();
+            const father = document.getElementById('regFather').value.trim();
+            const phone = document.getElementById('regPhone').value.trim();
+            const edu = document.getElementById('regEdu').value.trim();
+            const course = document.getElementById('regCourse').value;
+            const time = document.getElementById('regTime').value;
+            const address = document.getElementById('regAddress').value.trim();
+
+            const message = 
+                `*NEW ADMISSION INQUIRY - BHARAT SOFTWARE INSTITUTE*%0A` +
+                `----------------------------------------%0A` +
+                `👤 *Student Name:* ${encodeURIComponent(name)}%0A` +
+                `👨‍👦 *Father's Name:* ${encodeURIComponent(father)}%0A` +
+                `📞 *Mobile No:* ${encodeURIComponent(phone)}%0A` +
+                `🎓 *Qualification:* ${encodeURIComponent(edu)}%0A` +
+                `💻 *Selected Course:* ${encodeURIComponent(course)}%0A` +
+                `⏰ *Preferred Shift:* ${encodeURIComponent(time)}%0A` +
+                `📍 *Address:* ${encodeURIComponent(address)}%0A` +
+                `----------------------------------------%0A` +
+                `Hello Kamlesh Sir, main Bharat Software Institute (Gopal Nagar Chauraha, Siswa Bazar) me admission ke liye enquiry karna chahta/chahti hoon. Kripya batch details batayein.`;
+
+            const whatsappUrl = `https://wa.me/919565218906?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
